@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { routeAnimations } from '@app/core';
 
 @Component({
-  selector: 'anms-examples',
+  selector: 'acg-examples',
   templateUrl: './examples.component.html',
   styleUrls: ['./examples.component.scss'],
   animations: [routeAnimations]

@@ -19,7 +19,7 @@ import {
 } from './todos.reducer';
 
 @Component({
-  selector: 'anms-todos',
+  selector: 'acg-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
