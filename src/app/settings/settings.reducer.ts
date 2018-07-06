@@ -54,8 +54,8 @@ export const NIGHT_MODE_THEME = 'BLACK-THEME';
 export const initialState: SettingsState = {
   theme: 'DEFAULT-THEME',
   autoNightMode: true,
-  pageAnimations: true,
-  pageAnimationsDisabled: true,
+  pageAnimations: false,
+  pageAnimationsDisabled: false,
   elementsAnimations: true
 };
 
