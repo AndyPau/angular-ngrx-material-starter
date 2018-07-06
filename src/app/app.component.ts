@@ -8,8 +8,6 @@ import { Subject } from 'rxjs';
 import { takeUntil, filter } from 'rxjs/operators';
 
 import {
-  ActionAuthLogin,
-  ActionAuthLogout,
   AnimationsService,
   selectorAuth,
   routeAnimations
@@ -40,9 +38,9 @@ export class AppComponent implements OnInit, OnDestroy {
   year = new Date().getFullYear();
   logo = require('../assets/logo.png');
   navigation = [
-    { link: 'about', label: 'About' },
+    { link: 'examples', label: 'Examples' },
     { link: 'features', label: 'Features' },
-    { link: 'examples', label: 'Examples' }
+    { link: 'about', label: 'About' }
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -56,7 +54,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private titleService: Title,
     private animationService: AnimationsService
-  ) {}
+  ) {
+  }
 
   private static trackPageView(event: NavigationEnd) {
     (<any>window).ga('set', 'page', event.urlAfterRedirects);
@@ -76,14 +75,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }
-
-  onLoginClick() {
-    this.store.dispatch(new ActionAuthLogin());
-  }
-
-  onLogoutClick() {
-    this.store.dispatch(new ActionAuthLogout());
   }
 
   private subscribeToIsAuthenticated() {
@@ -117,8 +108,8 @@ export class AppComponent implements OnInit, OnDestroy {
     const { theme, autoNightMode } = settings;
     const hours = new Date().getHours();
     const effectiveTheme = (autoNightMode && (hours >= 20 || hours <= 6)
-      ? NIGHT_MODE_THEME
-      : theme
+        ? NIGHT_MODE_THEME
+        : theme
     ).toLowerCase();
     this.componentCssClass = effectiveTheme;
     const classList = this.overlayContainer.getContainerElement().classList;
