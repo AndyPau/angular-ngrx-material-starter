@@ -18,30 +18,33 @@ package:
     - webpack.config.js
     - yarn.lock
 
+  individually: true
+
 provider:
   name: aws
   runtime: nodejs8.10
   region: us-east-1
   stage: dev
+  memorySize: 128
 
   environment:
     DYNAMODB_TABLE: ${self:service}-${self:provider.stage}
 
-  memorySize: 128
   deploymentBucket:
     # name: com.coingainer.deploy.${self:provider.region}.deploys # Overwrite the default deployment bucket
     serverSideEncryption: AES256 # when using server-side encryption
+
   versionFunctions: false # Optional function versioning
 
   iamRoleStatements:
     - Effect: Allow
       Action:
-      - dynamodb:Query
-      - dynamodb:Scan
-      - dynamodb:GetItem
-      - dynamodb:PutItem
-      - dynamodb:UpdateItem
-      - dynamodb:DeleteItem
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 
