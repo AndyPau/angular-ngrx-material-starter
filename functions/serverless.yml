@@ -53,14 +53,14 @@ functions:
     handler: handler.hello
     events:
       - http:
-          method: post
+          method: get
           path: handler
           cors: true
   market:
     handler: market.marketcap
     events:
       - http:
-          method: post
+          method: get
           path: market
           cors: true
 
