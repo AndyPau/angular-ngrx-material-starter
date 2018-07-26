@@ -7,7 +7,7 @@ plugins:
 
 custom:
   output:
-    file: ./stack-${self:provider.stage}.json
+    file: ../dist/assets/stack.json
 
 package:
   exclude:
